@@ -1,0 +1,30 @@
+.state-default{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.state-mainContent{
+  height: 100%;
+  overflow: scroll;
+  /* border: 1px solid black; */
+}
+
+.state-figure{
+  display: inline-block;
+  margin-bottom: 10px;
+  border: 1px solid gray;
+}
+
+.state-messages{
+  display: inline-block;
+  margin-bottom: 10px;
+  border: 1px solid gray;
+}
+
+.state-prettyPrint{
+  text-align: left;
+  padding: 3px;
+  border: 1px solid black;
+}
