@@ -7,17 +7,12 @@ async function readChunk(offset, length){
 
 // Read a dot file
 async function readFile(){
-  file = document.getElementById("graph").files[0];
-  if(file == null) return;
   file_sz = file.size
 
   document.getElementById("progress").innerHTML = "0%";
   document.querySelector('.loading').classList.remove('hidden');
 
   graph = new Map();
-  curr_state = null;
-  path = [];
-
   let curr_offset = 0;
   let last_percentage_update = 0;
 

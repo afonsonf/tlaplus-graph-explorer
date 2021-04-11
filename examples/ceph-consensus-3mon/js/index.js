@@ -17,18 +17,41 @@ let childs = [];
 // Setup page
 window.onload = function() {
   document.querySelector('.loading').classList.add('hidden');
-  document.getElementById("check").classList.add('hidden');
+  document.getElementById("check").classList.add('hidden-visibility');
   document.getElementById("mainDiv").setAttribute("style","height: "+((window.innerHeight|| document.documentElement.clientHeight||document.body.clientHeight)-280)+"px")
 }
 
 // Load dot file (submit action)
 async function loadFile(){
-  await readFile();
-  console.log(graph.size)
-  if(graph == null) return;
+  file = document.getElementById("graph").files[0];
+  if(file == null) return;
 
+  curr_state = null;
+  path = [];
+  await readFile();
+
+  if(graph == null) return;
   document.querySelector('.loading').classList.add('hidden');
-  document.getElementById("check").classList.remove('hidden');
+  document.getElementById("check").classList.remove('hidden-visibility');
+  loadCurrState();
+}
+
+// Reloads the file and maintains the current state.
+async function reloadFile(){
+  file = document.getElementById("graph").files[0];
+  if(file == null) return;
+
+  try { await readFile();}
+  catch (e) {
+    document.getElementById("error").classList.remove('hidden');
+    document.querySelector('.loading').classList.add('hidden');
+    document.getElementById("check").classList.remove('hidden-visibility');
+    return;
+  }
+
+  if(graph == null) return;
+  document.querySelector('.loading').classList.add('hidden');
+  document.getElementById("check").classList.remove('hidden-visibility');
   loadCurrState();
 }
 
