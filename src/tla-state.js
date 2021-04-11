@@ -14,6 +14,12 @@ Helpers:
 
 chunk_sz = 500*_1MB;
 
+// Return the identifier label to use in the next state buttons
+function stateIdentifier(child_i, stateStr){
+  return "Child " + child_i;
+}
+
+//draw the state
 function drawState(content, stateStr){
   let result = document.createElement("div");
   result.classList.add('state-mainContent');
