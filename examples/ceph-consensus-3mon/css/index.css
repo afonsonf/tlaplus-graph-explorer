@@ -23,14 +23,14 @@
   margin-top: 10px;
   width: 95%;
   min-width: 1000px;
-  height: 700px;
+  height: 600px;
   padding: 6px;
 }
 
 .statesDiv{
   width: 100%;
   min-width: 800px;
-  height: 600px;
+  height: calc(100% - 100px);
   display: flex;
 }
 
@@ -44,35 +44,37 @@
   height: calc(100% - 25px);
 }
 
-.currState{
+.singleStateDiv{
   text-align: center;
   border: 2px solid gray;
   margin-right: 3px;
   width: 50%;
-  height: 590px;
+  height: calc(100% - 5px);
   padding: 5px;
+  padding-bottom: 0px;
+}
+
+.currState{
+  margin-right: 3px;
 }
 
 .nextState{
-  text-align: center;
-  border: 2px solid gray;
   margin-left: 3px;
-  width: 50%;
-  height: 590px;
-  padding: 5px;
 }
 
 .actionsDiv{
-  margin-top: 4px;
-  height: 96px;
+  /* margin-top: 4px; */
+  /* margin: 10px; */
+  /* height: 18%; */
 }
 
 .actions{
   display: flex;
   align-items: center;
-  height: 70%;
+  /* height: 80%; */
   overflow-x: scroll;
   overflow-y: hidden;
+  margin-top: 15px;
 }
 
 .actions label{
@@ -95,7 +97,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 30%;
+  /* height: 20%; */
 }
 
 

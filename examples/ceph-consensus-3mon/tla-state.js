@@ -14,6 +14,13 @@ Helpers:
 
 chunk_sz = 500*_1MB;
 
+// Return the identifier label to use in the next state buttons
+function stateIdentifier(child_i, stateStr){
+  let vars = parseVars(stateStr);
+  return vars.get("step_name");
+}
+
+//draw the state
 function drawState(content, stateStr){
   vars = parseVars(stateStr);
 
@@ -49,6 +56,7 @@ function drawState(content, stateStr){
   drawMessages(vars, messages, draw_width);
 }
 
+// Draw main figure representing the state
 function drawFigure(vars, figure, draw_width, draw_height){
   figure.setAttribute("style","height: "+draw_height+"px")
   const draw = SVG().addTo(figure).size(draw_width, draw_height);
@@ -74,6 +82,7 @@ function drawFigure(vars, figure, draw_width, draw_height){
   // drawGrid(draw, 8, line_attr);
 }
 
+// Draw Message queue
 function drawMessages(vars, messages, draw_width){
   let draw_height = 180;
   messages.setAttribute("style","height: "+draw_height+"px")
@@ -91,6 +100,7 @@ function drawMessages(vars, messages, draw_width){
   let queue3 = queueComponent(draw, draw_width, vars, posx, posy+100,3, 1, 2);
 }
 
+// Draw queue component for each monitor
 function queueComponent(draw, draw_width, vars, posx, posy, monA, monB, monC){
   let rect = draw.rect(draw_width-110, 45).move(105, posy+2)
                  .attr({ fill: '#a6a6a6', stroke: '#000080'})
@@ -112,6 +122,7 @@ function queueComponent(draw, draw_width, vars, posx, posy, monA, monB, monC){
   }).font({anchor: 'left', size: 16, family: 'Helvetica'}).move(posx, posy+5);
 }
 
+// Draw monitor info (value, pn, etc)
 function stateComponent(vars, draw, rect_sz, circle_sz, ith_mon){
   let res = draw.group();
   let draw_width = draw.width();
@@ -156,28 +167,27 @@ function stateComponent(vars, draw, rect_sz, circle_sz, ith_mon){
   return res;
 }
 
+// Draw info about the state (epoch, step name)
 function infoComponent(vars, draw){
   let draw_width = draw.width();
   let draw_height = draw.height();
 
   let rect_attr = { fill: '#f2f2f2', stroke: '#a6a6a6'}
   let rect_sz_w = (draw_height*1.4/3+30);
-  let rect_sz_h = (draw_height*0.7/3);
+  let rect_sz_h = (draw_height*0.7/3-20);
 
   let posx = draw_width*2/4+rect_sz_w/2-10-20;
   let posy = draw_height*3/4-rect_sz_h/2;
 
   let rect = draw.rect(rect_sz_w, rect_sz_h).move(posx, posy).attr(rect_attr);
 
-  let step_text = vars.get("step_x");
-
   let text_step = draw.text(function(add) {
-    add.tspan("step: "+step_text).newLine()
+    add.tspan("step: "+vars.get("step_name")).newLine()
     add.tspan("epoch: "+vars.get("epoch")).newLine()
-    add.tspan("diam: "+vars.get("step")).newLine()
   }).font({anchor: 'left', size: 14, family: 'Helvetica'}).move(posx+3, posy+10);
 }
 
+// Draw values log
 function valuesComponent(vars, draw){
   let draw_width = draw.width();
   let draw_height = draw.height();
@@ -206,6 +216,7 @@ function valuesComponent(vars, draw){
   mon_valuesComponent(draw, posx2, posy2+rect_sz_h2*2/3, 3, vars);
 }
 
+// Value log for one monitor
 function mon_valuesComponent(draw, posx, posy, mon, vars){
   let last_committed = vars.get("last_committed").get("m"+mon);
   let values = vars.get("values").get("m"+mon);
@@ -232,6 +243,7 @@ function mon_valuesComponent(draw, posx, posy, mon, vars){
   }).font({anchor: 'left', family:   'Helvetica'}).move(posx, posy+5);
 }
 
+// Draw a grid over svg draw space
 function drawGrid(draw, N, line_attr){
   let draw_width = draw.width();
   let draw_height = draw.height();
@@ -242,6 +254,7 @@ function drawGrid(draw, N, line_attr){
   }
 }
 
+// Draw an arrow from pos1 to pos2
 function drawArrow(draw, pos1, pos2){
   let offset = pos1.width()/2;
   if(pos1.cx() > pos2.cx()) offset = offset*-1;

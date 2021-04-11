@@ -1,3 +1,4 @@
+// State structure
 function State(id, offset, size){
   return {
     id: id,
@@ -5,23 +6,6 @@ function State(id, offset, size){
     size: size,
     childs: []
   };
-}
-
-function radioButton(value){
-  let button = document.createElement("input");
-  button.type = "radio";
-  button.name = "action";
-  button.value = value;
-  button.setAttribute("onchange","changePreview()");
-  let label = document.createElement("label");
-  label.appendChild(button);
-  if(value == 0){
-    label.appendChild(document.createTextNode("Previous"));
-    button.checked = true;
-  }
-  else
-    label.appendChild(document.createTextNode("Child "+value));
-  return label;
 }
 
 function copyState(state){
@@ -33,11 +17,30 @@ function copyState(state){
   };
 }
 
+// Creates a radio button
+function radioButton(child_i, stateStr){
+  let button = document.createElement("input");
+  button.type = "radio"; button.name = "action"; button.value = child_i;
+  button.setAttribute("onchange","updatePreview()");
+  let label = document.createElement("label");
+  label.appendChild(button);
+  if(child_i == 0){
+    label.appendChild(document.createTextNode("Previous"));
+    button.checked = true;
+  }
+  else{
+    label.appendChild(document.createTextNode(stateIdentifier(child_i, stateStr)));
+  }
+  return label;
+}
+
+// Parse a dot node
 // 0 -> not node, 1 -> state, 2 -> arrow
+// 1: returns [id, 1, stateStr]
+// 2: return [id1, 2, id2]
+// _s variant: use string instead of int to prevent overflow
 function parseNode(tmp){
-  let type = 0;
-  let id=null;
-  let value=null;
+  let type = 0, id=null, value=null;
   let node_x = tmp.indexOf(" ");
   let node_s = tmp.substr(0,node_x);
   let node   = Number(node_s);
@@ -62,77 +65,14 @@ function parseNode(tmp){
   return [id, type, value];
 }
 
-var updateCurr = function(evt) {
-  [id, type, value] = parseNode(evt.target.result);
-  curr_state.value = value;
-  path.push(curr_state);
-  drawCurrState(value);
-  drawPreviewState(path[Math.max(0,path.length-2)].value);
-  loadChilds();
-}
-
-var updateChilds = function(evt) {
-  [id, type, value] = parseNode(evt.target.result);
-  let c = copyState(graph.get(id));
-  c.value = value;
-  childs.push(c);
-
-  let button = radioButton(childs_i);
-  document.getElementById("actions").appendChild(button);
-
-  if(childs_i == 1){
-    button.children[0].checked = true;
-    drawPreviewState(value);
-  }
-  if(childs_i < curr_state.childs.length){
-    let child = graph.get(curr_state.childs[childs_i]);
-    childs_i += 1;
-    readChunk(child.offset, child.size, updateChilds);
-  }
-}
-
-var readStates = function(evt) {
-  let lines = evt.target.result.split("\n")
-  for(i =0; i < lines.length - 1; i++ ){
-    let type = 0;
-    let id=null;
-    let value=null;
-    let tmp = lines[i];
-    [id, type, value] = parseNode(tmp);
-    if(type == 1){
-      graph.set(id, State(id, curr_offset, tmp.length));
-      if(curr_state == null) curr_state = State(id, curr_offset, tmp.length);
-    }
-    if(type == 2 && !graph.get(id).childs.includes(value)) graph.get(id).childs.push(value)
-    curr_offset += tmp.length + 1;
-  }
-  if(curr_offset - last_print > 100000000){
-    last_print = curr_offset
-    // console.log(curr_offset/file_sz)
-    document.getElementById("progress").innerHTML = String(parseInt(curr_offset/file_sz * 100)) + "%"
-  }
-  if(curr_offset/file_sz > 0.99) loadCurrState();
-  else readChunk(curr_offset, chunk_sz, readStates);
-}
-
-const reader = new FileReader();
-function readChunk(offset, length, callback){
-  let blob = file.slice(offset, length + offset);
-  reader.onload = callback;
-  reader.readAsText(blob);
-}
-
 // remove some escapes
 function removeEscapes(str){
-  return str.replaceAll("\\\\", "\\")
-            .replaceAll("\\\"", "\"")
+  return str.replaceAll("\\\\", "\\").replaceAll("\\\"", "\"")
 }
 
 // return pretty printed html version of stateStr
 function prettyPrint(stateStr){
-  let lines = removeEscapes(stateStr).replaceAll(">", "&gt;")
-                                     .replaceAll("<", "&lt;")
-                                     .split("\\n");
+  let lines = removeEscapes(stateStr).replaceAll(">", "&gt;").replaceAll("<", "&lt;").split("\\n");
   let result = "";
   for(line of lines){
     // result += ("<nobr>"+line+"</nobr><br/>");
