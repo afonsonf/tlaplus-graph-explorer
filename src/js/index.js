@@ -16,6 +16,7 @@ let childs = [];
 
 document.querySelector('.loading').classList.add('hidden');
 document.getElementById("check").classList.add('hidden');
+document.getElementById("mainDiv").setAttribute("style","height: "+((window.innerHeight|| document.documentElement.clientHeight||document.body.clientHeight)-280)+"px")
 
 function loadChilds(){
   document.getElementById("actions").innerHTML = "";
