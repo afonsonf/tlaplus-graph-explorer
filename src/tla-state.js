@@ -21,15 +21,12 @@ function stateIdentifier(child_i, stateStr){
 
 //draw the state
 function drawState(content, stateStr){
-  let result = document.createElement("div");
-  result.classList.add('state-mainContent');
+  let template = document.getElementById("mainTemplate");
+  let result = template.content.cloneNode(true);
 
-  let state = document.createElement("div");
-  state.innerHTML = prettyPrint(stateStr);
-  state.classList.add('state-prettyPrint');
+  statePrettyPrint = result.querySelector("#prettyPrint");
+  statePrettyPrint.innerHTML = prettyPrint(stateStr);
 
-  result.appendChild(state);
-
-  content.innerHTML = ""
+  content.innerHTML = "";
   content.appendChild(result);
 }

@@ -6,7 +6,7 @@
 }
 
 .state-mainContent{
-  height: 100%;
+  height: calc(100% - 5px);
   overflow: scroll;
 }
 

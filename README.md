@@ -10,12 +10,12 @@ The application is written to support big dot files and not load the whole file 
 #### Example 1 - Missionaries and Cannibals
 Spec: [https://github.com/tlaplus/Examples/tree/master/specifications/MissionariesAndCannibals](https://github.com/tlaplus/Examples/tree/master/specifications/MissionariesAndCannibals).
 
-![](example-gifs/example1/example1.gif)
+![](gifs/example1/example1.gif)
 
 #### Example 2 - Ceph consensus algorithm
 Spec: [https://github.com/afonsonf/ceph-consensus-spec](https://github.com/afonsonf/ceph-consensus-spec).
 
-![](example-gifs/example2/example2.gif)
+![](gifs/example2/example2.gif)
 
 ## How to use
 

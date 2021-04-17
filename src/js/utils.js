@@ -95,6 +95,6 @@ function parseVars(stateStr){
       currVal = line.substr(equalIndex+2);
     } else currVal += line;
   }
-  if(currVar != null) vars.set(currVar, currVal);
+  if(currVar != null) vars.set(currVar, parser.parse(currVal));
   return vars;
 }

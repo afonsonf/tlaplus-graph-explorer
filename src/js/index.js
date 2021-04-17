@@ -1,6 +1,6 @@
 "use strict";
 
-// Default chunk size
+// Default chunk size. This is overwritten by the value in tla-state.js.
 const _1MB = 1000000;
 let chunk_sz = 500*_1MB;
 
