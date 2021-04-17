@@ -7,15 +7,17 @@ The application is written to support big dot files and not load the whole file 
 
 ## Examples
 
-#### Example 1 - Missionaries and Cannibals
+For more examples: [examples](examples).
+
+#### Example 1 - Default Configuration
 Spec: [https://github.com/tlaplus/Examples/tree/master/specifications/MissionariesAndCannibals](https://github.com/tlaplus/Examples/tree/master/specifications/MissionariesAndCannibals).
 
-![](gifs/example1/example1.gif)
+![](examples/default/example.gif)
 
-#### Example 2 - Ceph consensus algorithm
+#### Example 2 - Personalized state
 Spec: [https://github.com/afonsonf/ceph-consensus-spec](https://github.com/afonsonf/ceph-consensus-spec).
 
-![](gifs/example2/example2.gif)
+![](examples/ceph-consensus/example.gif)
 
 ## How to use
 
@@ -23,9 +25,9 @@ The application is in the folder [src](src).
 
 The default way to represent a state is showing the pretty printed version, as shown previously in example 1.
 
-The representation of a state can be personalized by changing the function drawState in the file [tla-state.js](src/tla-state.js). An example of a personalized state representation is shown in the example 2 and the source code is in [examples/ceph-consensus-3mon](examples/ceph-consensus-3mon).
+The representation of a state can be personalized by changing the function drawState in the file [tla-state.js](src/tla-state.js). An example of a personalized state representation is shown in the example 2 and the source code is in [examples/ceph-consensus](examples/ceph-consensus). There are other examples in the folder [examples](examples).
 
-To help create a personalized representation of a state, the application comes with a parser that parses a tla+ state into JavaScript structures. The parser definition is in folder [expr-parser](expr-parser) and example usage of the parser (function parseVars) can be found at [examples/ceph-consensus-3mon](examples/ceph-consensus-3mon).
+To help create a personalized representation of a state, the application comes with a parser that parses a tla+ state into JavaScript structures. The parser definition is in folder [expr-parser](expr-parser) and example usage of the parser (function parseVars) can be found in the examples.
 
 ## Related tools
 

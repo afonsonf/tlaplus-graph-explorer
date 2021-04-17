@@ -129,11 +129,13 @@ function stateComponent(vars, draw, rect_sz, circle_sz, ith_mon){
   let draw_height = draw.height();
 
   let rect_attr = { fill: '#f2f2f2', stroke: '#a6a6a6'};
-  let inquorum_attr = {fill: '#c6ecc6', stroke: "#194d19"};
+  let active_attr = {fill: '#c6ecc6', stroke: "#194d19"};
   let outquorum_attr = {fill: '#ffe0cc', stroke: "#ff6600"};
+  let inquorum_attr = {fill: '#ffff99', stroke: "#a6a6a6"};
 
-  let circle_attr = outquorum_attr;
-  if(vars.get("quorum").get("m"+(ith_mon+1))) circle_attr = inquorum_attr;
+  let circle_attr = inquorum_attr;
+  if(!vars.get("quorum").get("m"+(ith_mon+1))) circle_attr = outquorum_attr;
+  if(vars.get("state").get("m"+(ith_mon+1)) == "STATE_ACTIVE") circle_attr = active_attr;
 
   let mon = "m"+(ith_mon+1)
   let role = "Peon"

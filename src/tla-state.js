@@ -12,6 +12,7 @@ Helpers:
     Records are parsed into js objects
 */
 
+// Chunk size when reading a file
 chunk_sz = 500*_1MB;
 
 // Return the identifier label to use in the next state buttons
@@ -19,7 +20,7 @@ function stateIdentifier(child_i, stateStr){
   return "Child " + child_i;
 }
 
-//draw the state
+// Draw the state
 function drawState(content, stateStr){
   let template = document.getElementById("mainTemplate");
   let result = template.content.cloneNode(true);

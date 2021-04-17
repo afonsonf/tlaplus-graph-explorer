@@ -1,0 +1,133 @@
+.state-default{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.state-mainContent{
+  height: calc(100% - 5px);
+  overflow: scroll;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.state-mainContent p{ display: inline; }
+
+.state-monitorsDiv{
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.state-monitor{
+  flex-shrink: 0;
+  border: 2px solid gray;
+  margin: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  min-width: 170px;
+  text-align: left;
+  font-size: 14px;
+  background-color: #f2f2f2;
+}
+
+.state-monitorsDiv .state-monitor:first-child{ margin-left: auto;}
+.state-monitorsDiv .state-monitor:last-child{ margin-right: auto;}
+
+.monitor-value{
+  margin: auto;
+  margin-right: 0px;
+  border: 2px solid gray;
+  padding: 2px;
+  border-radius: 10%;
+  min-width: 40px;
+  text-align: center;
+}
+
+.monitor-not-active .monitor-value{ background-color: #ffff99;}
+.monitor-active .monitor-value{ background-color: #c1f0c1;}
+.monitor-crashed .monitor-value{ background-color: #ffb3b3;}
+
+.state-infoDiv{
+  display: flex;
+  border: 2px solid gray;
+}
+
+.state-messagesDiv{
+  text-align: left;
+  margin: auto;
+  margin-left: 5px;
+  padding: 5px;
+  width: calc(100% - 250px);
+}
+
+.queueDiv{ margin-top: 3px; width: 100%;}
+.queue-from{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.queue-dest{
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 7px;
+}
+
+.queue-list{ display: inline-block; width: 100%;}
+
+.queue-messages{
+  padding: 5px;
+  display: inline-block;
+  background-color: #f2f2f2;
+  border: 2px solid gray;
+  width: calc(100% - 80px);
+  overflow-x: scroll;
+  overflow-y: hidden;
+  font-size: 14px;
+}
+
+.state-valuesDiv{
+  text-align: left;
+  margin: auto;
+  margin-top: 15%;
+  padding: 5px;
+  width: 230px;
+}
+
+.valueDiv{ margin: 5px;}
+
+.value-values{
+  margin: auto;
+  margin-left: 5px;
+  padding: 5px;
+  background-color: #f2f2f2;
+  display: inline-block;
+  border: 2px solid gray;
+  width: calc(100% - 80px);
+}
+
+.state-infoDivRight{}
+
+.state-stateInfoDiv{
+  text-align: left;
+  margin: auto;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #f2f2f2;
+  border: 2px solid gray;
+  width: calc(100% - 40px);
+  margin-bottom: 10px;
+}
+
+@-moz-document url-prefix(){
+  .queue-messages{scrollbar-width: thin; padding-bottom: 0px;}
+}
+
+.state-prettyPrint{
+  text-align: left;
+  padding: 10px;
+  border: 1px solid black;
+  margin-top: 3px;
+}
