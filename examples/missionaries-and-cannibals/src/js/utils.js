@@ -13,7 +13,8 @@ function copyState(state){
     id: state.id,
     offset: state.offset,
     size: state.size,
-    childs: state.childs
+    childs: state.childs,
+    value: state.value
   };
 }
 

@@ -18,7 +18,7 @@ let childs = [];
 window.onload = function() {
   document.querySelector('.loading').classList.add('hidden');
   document.getElementById("check").classList.add('hidden-visibility');
-  document.getElementById("mainDiv").setAttribute("style","height: "+((window.innerHeight|| document.documentElement.clientHeight||document.body.clientHeight)-250)+"px")
+  document.getElementById("mainDiv").setAttribute("style","height: "+((window.innerHeight|| document.documentElement.clientHeight||document.body.clientHeight)-260)+"px")
 }
 
 // Load dot file (submit action)
@@ -30,7 +30,29 @@ async function loadFile(){
   path = [];
   await readFile();
 
-  if(graph == null) return;
+  if(graph == null || curr_state==null){
+    document.getElementById("error").classList.remove('hidden');
+    document.querySelector('.loading').classList.add('hidden');
+    return;
+  }
+  document.querySelector('.loading').classList.add('hidden');
+  document.getElementById("check").classList.remove('hidden-visibility');
+  loadCurrState();
+}
+
+async function loadTrace(){
+  file = document.getElementById("graph").files[0];
+  if(file == null) return;
+
+  curr_state = null;
+  path = [];
+  await readTrace();
+
+  if(graph == null || curr_state==null){
+    document.getElementById("error").classList.remove('hidden');
+    document.querySelector('.loading').classList.add('hidden');
+    return;
+  }
   document.querySelector('.loading').classList.add('hidden');
   document.getElementById("check").classList.remove('hidden-visibility');
   loadCurrState();
@@ -45,7 +67,6 @@ async function reloadFile(){
   catch (e) {
     document.getElementById("error").classList.remove('hidden');
     document.querySelector('.loading').classList.add('hidden');
-    document.getElementById("check").classList.remove('hidden-visibility');
     return;
   }
 
@@ -60,14 +81,16 @@ async function loadCurrState(){
   if(graph == null) return;
   curr_state = copyState(graph.get(curr_state.id));
 
-  let text = await readChunk(curr_state.offset, curr_state.size);
-  let [id, type, stateStr] = parseNode(text);
-  curr_state.value = stateStr;
+  if(curr_state.value == null){
+    let text = await readChunk(curr_state.offset, curr_state.size);
+    let [id, type, stateStr] = parseNode(text);
+    curr_state.value = stateStr;
+  } else curr_state.value = graph.get(curr_state.id).value
 
-  if(path.length == 0 || path[path.length-1].id != id)
+  if(path.length == 0 || path[path.length-1].id != curr_state.id)
     path.push(curr_state);
 
-  drawCurrState(stateStr);
+  drawCurrState(curr_state.value);
   drawPreviewState(path[Math.max(0,path.length-2)].value);
 
   loadChilds();
@@ -82,16 +105,18 @@ async function loadChilds(){
     let child = copyState(graph.get(curr_state.childs[child_i]));
     childs.push(child);
 
-    let text = await readChunk(child.offset, child.size);
-    let [id, type, stateStr] = parseNode(text);
-    child.value = stateStr;
+    if(child.value == null){
+      let text = await readChunk(child.offset, child.size);
+      let [id, type, stateStr] = parseNode(text);
+      child.value = stateStr;
+    }
 
-    let button = radioButton(child_i+1, stateStr);
+    let button = radioButton(child_i+1, child.value);
     document.getElementById("actions").appendChild(button);
 
     if(child_i == 0){
       button.children[0].checked = true;
-      drawPreviewState(stateStr);
+      drawPreviewState(child.value);
     }
   }
 }

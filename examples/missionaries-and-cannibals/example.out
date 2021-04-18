@@ -1,0 +1,218 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.16 of Day Month 20?? (rev: 131a34b)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 35 and seed 1920930387022480151 with 2 workers on 4 cores with 1184MB heap and 2661MB offheap memory [pid: 18450] (Linux 5.8.0-49-generic amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file /home/afonsonf/sandbox/reps/TLA-Examples/specifications/MissionariesAndCannibals/MissionariesAndCannibals.toolbox/Model_1/MC.tla
+Parsing file /home/afonsonf/sandbox/reps/TLA-Examples/specifications/MissionariesAndCannibals/MissionariesAndCannibals.toolbox/Model_1/MissionariesAndCannibals.tla
+Parsing file /home/afonsonf/sandbox/tools/tla+/plugins/org.lamport.tlatools_1.0.0.202104102238/tla2sany/StandardModules/TLC.tla
+Parsing file /home/afonsonf/sandbox/tools/tla+/plugins/org.lamport.tlatools_1.0.0.202104102238/tla2sany/StandardModules/Integers.tla
+Parsing file /home/afonsonf/sandbox/tools/tla+/plugins/org.lamport.tlatools_1.0.0.202104102238/tla2sany/StandardModules/FiniteSets.tla
+Parsing file /home/afonsonf/sandbox/tools/tla+/plugins/org.lamport.tlatools_1.0.0.202104102238/tla2sany/StandardModules/Naturals.tla
+Parsing file /home/afonsonf/sandbox/tools/tla+/plugins/org.lamport.tlatools_1.0.0.202104102238/tla2sany/StandardModules/Sequences.tla
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module MissionariesAndCannibals
+Semantic processing of module TLC
+Semantic processing of module MC
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2021-04-18 19:19:42)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2190:0 @!@!@
+Finished computing initial states: 1 distinct state generated at 2021-04-18 19:19:43.
+@!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2110:1 @!@!@
+Invariant inv_16187699817904000 is violated.
+@!@!@ENDMSG 2110 @!@!@
+@!@!@STARTMSG 2121:1 @!@!@
+The behavior up to this point is:
+@!@!@ENDMSG 2121 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+1: <Initial predicate>
+/\ bank_of_boat = "E"
+/\ who_is_on_bank = [E |-> {c1, c2, c3, m1, m2, m3}, W |-> {}]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+2: <Next line 188, col 9 to line 189, col 33 of module MissionariesAndCannibals>
+/\ bank_of_boat = "W"
+/\ who_is_on_bank = [E |-> {c3, m1, m2, m3}, W |-> {c1, c2}]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+3: <Next line 188, col 9 to line 189, col 33 of module MissionariesAndCannibals>
+/\ bank_of_boat = "E"
+/\ who_is_on_bank = [E |-> {c1, c3, m1, m2, m3}, W |-> {c2}]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+4: <Next line 188, col 9 to line 189, col 33 of module MissionariesAndCannibals>
+/\ bank_of_boat = "W"
+/\ who_is_on_bank = [E |-> {m1, m2, m3}, W |-> {c1, c2, c3}]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+5: <Next line 188, col 9 to line 189, col 33 of module MissionariesAndCannibals>
+/\ bank_of_boat = "E"
+/\ who_is_on_bank = [E |-> {c1, m1, m2, m3}, W |-> {c2, c3}]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+6: <Next line 188, col 9 to line 189, col 33 of module MissionariesAndCannibals>
+/\ bank_of_boat = "W"
+/\ who_is_on_bank = [E |-> {c1, m3}, W |-> {c2, c3, m1, m2}]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+7: <Next line 188, col 9 to line 189, col 33 of module MissionariesAndCannibals>
+/\ bank_of_boat = "E"
+/\ who_is_on_bank = [E |-> {c1, c2, m1, m3}, W |-> {c3, m2}]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+8: <Next line 188, col 9 to line 189, col 33 of module MissionariesAndCannibals>
+/\ bank_of_boat = "W"
+/\ who_is_on_bank = [E |-> {c1, c2}, W |-> {c3, m1, m2, m3}]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+9: <Next line 188, col 9 to line 189, col 33 of module MissionariesAndCannibals>
+/\ bank_of_boat = "E"
+/\ who_is_on_bank = [E |-> {c1, c2, c3}, W |-> {m1, m2, m3}]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+10: <Next line 188, col 9 to line 189, col 33 of module MissionariesAndCannibals>
+/\ bank_of_boat = "W"
+/\ who_is_on_bank = [E |-> {c3}, W |-> {c1, c2, m1, m2, m3}]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+11: <Next line 188, col 9 to line 189, col 33 of module MissionariesAndCannibals>
+/\ bank_of_boat = "E"
+/\ who_is_on_bank = [E |-> {c1, c3}, W |-> {c2, m1, m2, m3}]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+12: <Next line 188, col 9 to line 189, col 33 of module MissionariesAndCannibals>
+/\ bank_of_boat = "W"
+/\ who_is_on_bank = [E |-> {}, W |-> {c1, c2, c3, m1, m2, m3}]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2021-04-18 19:19:43
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<Init line 115, col 1 to line 115, col 4 of module MissionariesAndCannibals>: 2:2
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 115, col 9 to line 118, col 52 of module MissionariesAndCannibals: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<Next line 188, col 1 to line 188, col 4 of module MissionariesAndCannibals>: 60:325
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 165, col 17 to line 165, col 40 of module MissionariesAndCannibals: 1270
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 165, col 17 to line 165, col 30 of module MissionariesAndCannibals: 974
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 165, col 36 to line 165, col 40 of module MissionariesAndCannibals: 974
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 130, col 17 to line 130, col 37 of module MissionariesAndCannibals: 653
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 130, col 17 to line 130, col 17 of module MissionariesAndCannibals: 547
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 130, col 29 to line 130, col 37 of module MissionariesAndCannibals: 547
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 131, col 17 to line 131, col 81 of module MissionariesAndCannibals: 218
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 131, col 17 to line 131, col 45 of module MissionariesAndCannibals: 546
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 131, col 50 to line 131, col 81 of module MissionariesAndCannibals: 546
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 168, col 31 to line 168, col 41 of module MissionariesAndCannibals: 547
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 130, col 17 to line 130, col 37 of module MissionariesAndCannibals: 543
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 130, col 17 to line 130, col 17 of module MissionariesAndCannibals: 499
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 130, col 29 to line 130, col 37 of module MissionariesAndCannibals: 499
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 131, col 17 to line 131, col 81 of module MissionariesAndCannibals: 280
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 131, col 17 to line 131, col 45 of module MissionariesAndCannibals: 499
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 131, col 50 to line 131, col 81 of module MissionariesAndCannibals: 499
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 169, col 31 to line 169, col 42 of module MissionariesAndCannibals: 499
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 170, col 24 to line 170, col 51 of module MissionariesAndCannibals: 324
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 170, col 40 to line 170, col 51 of module MissionariesAndCannibals: 325
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 171, col 24 to line 173, col 73 of module MissionariesAndCannibals: 324
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  |line 172, col 26 to line 173, col 73 of module MissionariesAndCannibals: 325:650
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 189, col 18 to line 189, col 18 of module MissionariesAndCannibals: 974
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 189, col 21 to line 189, col 32 of module MissionariesAndCannibals: 547
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  line 188, col 18 to line 188, col 52 of module MissionariesAndCannibals: 71:2101
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2774:0 @!@!@
+<inv_16187699817904000 line 25, col 1 to line 25, col 21 of module MC>
+@!@!@ENDMSG 2774 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 26, col 1 to line 26, col 25 of module MC: 61
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2202:0 @!@!@
+End of statistics.
+@!@!@ENDMSG 2202 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(12) at 2021-04-18 19:19:43: 261 states generated (11 169 s/min), 61 distinct states found (2 610 ds/min), 0 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+261 states generated, 61 distinct states found, 0 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 12.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 1408ms at (2021-04-18 19:19:43)
+@!@!@ENDMSG 2186 @!@!@

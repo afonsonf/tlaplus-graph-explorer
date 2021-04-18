@@ -69,7 +69,7 @@ function drawMonitor(vars, v){
 
   monitor.querySelector("#monitor-state").innerHTML = vars.get("state").get(mon);
   monitor.querySelector("#monitor-pn").innerHTML = vars.get("accepted_pn").get(mon);
-  monitor.querySelector("#monitor-pending_pn").innerHTML = vars.get("pending_pn").get(mon);
+  try{monitor.querySelector("#monitor-pending_pn").innerHTML = vars.get("pending_pn").get(mon);}catch (e) {}
   monitor.querySelector("#monitor-new_value").innerHTML = vars.get("new_value").get(mon);
   monitor.querySelector("#monitor-uncommitted_pn").innerHTML = vars.get("uncommitted_pn").get(mon);
   monitor.querySelector("#monitor-uncommitted_v").innerHTML = vars.get("uncommitted_v").get(mon);

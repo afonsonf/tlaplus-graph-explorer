@@ -20,8 +20,7 @@ Spec: [https://github.com/afonsonf/ceph-consensus-spec](https://github.com/afons
 ![](examples/ceph-consensus/example.gif)
 
 ## How to use
-
-The application is in the folder [src](src).
+The application is in the folder [src](src). To run it, open the index.html file in a browser (tested in Chrome and Firefox).
 
 The default way to represent a state is showing the pretty printed version, as shown previously in example 1.
 
