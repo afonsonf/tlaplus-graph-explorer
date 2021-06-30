@@ -19,7 +19,7 @@
 'TRUE'  return 'TRUE';
 'FALSE' return 'FALSE';
 
-'"'.*'"'                           return 'STRING';
+'"'.[^\"]*'"'                      return 'STRING';
 [a-zA-Z0-9_]*[a-zA-Z][a-zA-Z0-9_]* return 'NameChar';
 [0-9]+                             return 'Numeral';
 

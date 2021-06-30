@@ -31,3 +31,15 @@ a = parser.parse("(m1 :>\
 
 console.log(a)
 console.log(a.get('m1').get('m2'))
+
+a = parser.parse("\
+<< <<allen, \"p_change_status_load\">>,\
+   <<allen, \"p_change_status4\">>,\
+   <<allen, \"p_change_status_exit\">>,\
+   <<jorge, \"p_allocate_load\">>,\
+   <<jorge, \"f_is_accepted_call\">>,\
+   <<jorge, \"f_is_accepted5\">>,\
+   <<jorge, \"f_is_accepted8\">> >>\
+")
+
+console.log(a)
